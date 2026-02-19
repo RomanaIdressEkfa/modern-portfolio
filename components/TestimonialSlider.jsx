@@ -7,61 +7,63 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+// PROFESSIONAL CLIENT REVIEWS
 const testimonialData = [
   {
-    image: "/t-avt-1.png",
-    name: "Anne Smith",
-    position: "Customer",
+    image: "/t-avt-1.png", // Ensure you have this image in public folder
+    name: "James Anderson",
+    position: "CEO, TechVision USA",
     message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!",
+      "I have worked with many developers, but Romana is in a league of her own. She didn't just write code; she engineered a complete solution for our business. Her expertise in Laravel and automation saved us hundreds of hours. Simply outstanding work!",
   },
   {
-    image: "/t-avt-2.png",
-    name: "Jane Doe",
-    position: "Customer",
+    image: "/t-avt-2.png", // Ensure you have this image in public folder
+    name: "Sarah Jenkins",
+    position: "Product Manager, Creative Agency",
     message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!",
+      "Romana delivered a pixel-perfect platform that exceeded our expectations. The UI is sleek, the backend is secure, and the performance is lightning fast. Everyone, including our stakeholders, fell in love with the design immediately.",
   },
   {
-    image: "/t-avt-3.png",
-    name: "Jhon Doe",
-    position: "Customer",
+    image: "/t-avt-3.png", // Ensure you have this image in public folder
+    name: "Michael Roberts",
+    position: "Founder, E-Com Solutions",
     message:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!",
+      "Reliable, talented, and professional. Romana fixed complex database issues in our multi-vendor marketplace that others couldn't solve. If you need a Full Stack expert who truly understands Clean Architecture, hire her immediately.",
   },
 ];
 
 const TestimonialSlider = () => {
   return (
     <Swiper
-      navigation
+      navigation={true}
       pagination={{
         clickable: true,
       }}
       modules={[Navigation, Pagination]}
-      className="h-[400px]"
+      className="h-[450px] sm:h-[400px]" // Height adjusted for mobile text
     >
       {testimonialData.map((person, i) => (
         <SwiperSlide key={i}>
-          <div className="flex flex-col items-center md:flex-row gap-x-8 h-full px-16">
+          <div className="flex flex-col items-center md:flex-row gap-x-8 h-full px-4 md:px-16">
             {/* avatar, name, position */}
             <div className="w-full max-w-[300px] flex flex-col xl:justify-center items-center relative mx-auto xl:mx-0">
               <div className="flex flex-col justify-center text-center">
                 {/* avatar */}
-                <div className="mb-2 mx-auto">
+                <div className="mb-4 mx-auto border-2 border-accent rounded-full p-1">
                   <Image
                     src={person.image}
                     width={100}
                     height={100}
                     alt={person.name}
+                    className="rounded-full"
                   />
                 </div>
 
                 {/* name */}
-                <div className="text-lg">{person.name}</div>
+                <div className="text-lg font-bold text-white">{person.name}</div>
 
                 {/* position */}
-                <div className="text-[12px] uppercase font-extralight tracking-widest">
+                <div className="text-[12px] uppercase font-bold tracking-widest text-accent mb-4 md:mb-0">
                   {person.position}
                 </div>
               </div>
@@ -73,13 +75,13 @@ const TestimonialSlider = () => {
               <div className="mb-4">
                 <FaQuoteLeft
                   className="text-4xl xl:text-6xl text-white/20 mx-auto md:mx-0"
-                  aria-aria-hidden
+                  aria-hidden
                 />
               </div>
 
               {/* message */}
-              <div className="xl:text-lg text-center md:text-left">
-                {person.message}
+              <div className="xl:text-lg text-center md:text-left text-white/80 italic leading-relaxed">
+                "{person.message}"
               </div>
             </div>
           </div>
