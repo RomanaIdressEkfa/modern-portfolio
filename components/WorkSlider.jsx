@@ -16,7 +16,7 @@ const workSlides = {
         {
           title: "UBSL Enterprise",
           tech: "Laravel • ERPNext",
-          path: "/thumb1.jpg", // Replace with UBSL screenshot
+          path: "/p.png", // Replace with UBSL screenshot
           link: "https://www.ubsbd.com.bd/",
         },
         {
