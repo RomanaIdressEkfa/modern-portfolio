@@ -16,25 +16,25 @@ const workSlides = {
         {
           title: "UBSL Enterprise",
           tech: "Laravel • ERPNext",
-          path: "/p.png", // Replace with UBSL screenshot
+          path: "/pp.png", // Replace with UBSL screenshot
           link: "https://www.ubsbd.com.bd/",
-        },
-        {
-          title: "Troubleshoot",
-          tech: "Service Marketplace",
-          path: "/thumb2.jpg", // Replace with Troubleshoot screenshot
-          link: "https://troubleshoot.com.bd",
         },
         {
           title: "Pickarro BD",
           tech: "Multi-vendor E-com",
-          path: "/thumb3.jpg", // Replace with Pickarro screenshot
+          path: "/Screenshot 2025-11-05 113832.png", // Replace with Pickarro screenshot
           link: "https://pickarrobd.com/",
+        },
+         {
+          title: "Urban Mart",
+          tech: "Single Vendor Store",
+          path: "/Screenshot 2025-11-05 113655.png", 
+          link: "https://urbanmartcn.com/",
         },
         {
           title: "Alfurqaan LMS",
           tech: "Live Class & Quiz",
-          path: "/thumb4.jpg", // Replace with Alfurqaan screenshot
+          path: "/Screenshot 2025-11-05 113915.png", // Replace with Alfurqaan screenshot
           link: "https://alfurqaan.academy/",
         },
       ],
@@ -42,21 +42,22 @@ const workSlides = {
     {
       images: [
         {
-          title: "Urban Mart",
-          tech: "Single Vendor Store",
-          path: "/thumb5.jpg", 
-          link: "https://urbanmartcn.com/",
+          title: "Troubleshoot",
+          tech: "Service Marketplace",
+          path: "/images.jpg", // Replace with Troubleshoot screenshot
+          link: "https://troubleshoot.com.bd",
         },
+       
         {
           title: "Metro Express",
           tech: "Logistics System",
-          path: "/thumb6.jpg", 
+          path: "/metro.jpg", 
           link: "https://metroexpress.so/",
         },
         {
           title: "BD School Jalan",
           tech: "School Management",
-          path: "/thumb7.jpg", 
+          path: "/school.jpg", 
           link: "https://bsjalan.com/",
         },
         {
@@ -76,22 +77,50 @@ const workSlides = {
           link: "http://surmatechzone.com/",
         },
         {
-          title: "Sentiment Analysis",
-          tech: "Research Paper (2025)",
-          path: "/thumb10.jpg", 
-          link: "https://www.techscience.com/",
+          title: "Raadiall",
+          tech: "Online Ticket System",
+          path: "/raadiall.jpg", 
+          link: "https://raadiall.com/",
         },
         {
-          title: "Cyber Home (USA)",
-          tech: "Remote Dev",
-          path: "/thumb3.jpg", 
-          link: "#",
+          title: "So Express",
+          tech: "Online Ticket System",
+          path: "/Screenshot 2026-02-23 115450.png", 
+          link: "https://www.contextser.online/",
         },
         {
-          title: "Open Soft Ltd",
+          title: "SWR",
           tech: "Full Stack",
-          path: "/thumb4.jpg", 
-          link: "#",
+          path: "/screencapture-swrbd-2026-02-23-12_05_24.png", 
+          link: "https://swrbd.com/",
+        },
+      ],
+    },
+    {
+      images: [
+        {
+          title: "Logically Debate",
+          tech: "Online Debate Website",
+          path: "/screencapture-logicallydebate-debates-2026-02-23-12_24_04.png", 
+          link: "https://logicallydebate.com/",
+        },
+        {
+          title: "PicBazar",
+          tech: "React E-commerce",
+          path: "/still-71bbfb345821aed5d5463f7f6f3c5a9a.webp", 
+          link: "https://pickbazar-react-rest.vercel.app/",
+        },
+        {
+          title: "Fast Food",
+          tech: "Online Landing Page Food System",
+          path: "/Screenshot 2026-02-23 121455.png", 
+          link: "https://bespoke-hotteok-f14a79.netlify.app/",
+        },
+        {
+          title: "Wedding Booking",
+          tech: "Online Wedding Booking System",
+          path: "/Screenshot 2026-02-23 121726.png", 
+          link: "https://eloquent-paletas-d3492f.netlify.app/",
         },
       ],
     },
