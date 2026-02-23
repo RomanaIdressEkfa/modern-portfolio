@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-
 import Bulb from "../../components/Bulb";
 import Circles from "../../components/Circles";
 import WorkSlider from "../../components/WorkSlider";
@@ -7,47 +6,55 @@ import { fadeIn } from "../../variants";
 
 const Work = () => {
   return (
-    <div className="h-full bg-primary/30 py-36 flex items-center">
+    // FIX 1: 'pt-40' for mobile (pushes content down below logo)
+    // 'lg:pt-0' for desktop (keeps it centered)
+    <div className="h-full bg-primary/30 pt-40 pb-10 lg:py-32 flex flex-col items-center overflow-hidden relative">
       <Circles />
-      <div className="container mx-auto" >
-        <div className="flex flex-col xl:flex-row gap-x-8">
-          {/* text */}
-          <div className="text-center flex xl:w-[30vw] flex-col lg:text-left mb-4 xl:mb-0 justify-center">
-            <motion.h2
-              variants={fadeIn("up", 0.2)}
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-              className="h2 xl:mt-12"
-            >
-              My work <span className="text-accent">.</span>
-            </motion.h2>
-            <motion.p
-              variants={fadeIn("up", 0.4)}
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-              className="mb-4 max-w-[400px] mx-auto lg:mx-0 text-white/80"
-            >
-              Showcasing <span className="text-accent font-bold">20+ Enterprise Projects</span> spanning 
-              ERP systems, eCommerce platforms, and Automation workflows. 
-              <br/>
-              Built with <span className="text-white font-semibold">Laravel, React, and Modern Tech.</span>
-            </motion.p>
-          </div>
-
-          {/* slider */}
-          <motion.div
-            variants={fadeIn("down", 0.6)}
+      
+      {/* 
+        FIX 2: 'justify-start' for mobile (stacks from top)
+        'lg:justify-center' for desktop (centers vertically)
+      */}
+      <div className="container mx-auto px-4 z-20 flex flex-col justify-start lg:justify-center h-full">
+        
+        {/* ---------------- TEXT SECTION ---------------- */}
+        {/* FIX 3: Reduced 'mb-4' to remove the big gap in the middle */}
+        <div className="text-center mb-6 lg:mb-12">
+          <motion.h2
+            variants={fadeIn("down", 0.3)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="w-full xl:max-w-[65%]"
+            className="h2 text-2xl md:text-3xl xl:text-5xl"
           >
-            <WorkSlider />
-          </motion.div>
+            My <span className="text-accent">Masterpieces</span>
+          </motion.h2>
+          
+          <motion.p
+            variants={fadeIn("down", 0.4)}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="max-w-[600px] mx-auto text-white/70 text-xs md:text-sm lg:text-base px-2 leading-relaxed"
+          >
+             Showcasing a collection of high-performance websites.
+             <br className="hidden md:block" />
+             <span className="text-accent font-bold">20+ Projects</span> built with modern technologies.
+          </motion.p>
         </div>
+
+        {/* ---------------- SLIDER SECTION ---------------- */}
+        <motion.div
+          variants={fadeIn("up", 0.5)}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+          className="w-full xl:max-w-[90%] flex-1 flex items-start lg:items-center justify-center relative z-10"
+        >
+           <WorkSlider />
+        </motion.div>
       </div>
+      
       <Bulb />
     </div>
   );
