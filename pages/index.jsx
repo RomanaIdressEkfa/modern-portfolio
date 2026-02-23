@@ -30,19 +30,29 @@ const item = {
 
 const Home = () => {
   return (
-    <div className="bg-primary/60 h-full">
+    // FIX: 'overflow-y-auto' for Mobile scrolling
+    // 'xl:overflow-hidden' ensures Desktop remains fixed (no scrollbar on PC)
+    <div className="bg-primary/60 h-full overflow-y-auto xl:overflow-hidden relative">
+      
       {/* text */}
-      <div className="w-full h-full bg-gradient-to-r from-black/65 via-black/35 to-black/65">
+      <div className="w-full min-h-full bg-gradient-to-r from-black/65 via-black/35 to-black/65">
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
           exit="hidden"
-          className="text-center flex flex-col justify-center xl:pt-40 xl:text-left h-full container mx-auto"
+          // FIX:
+          // Mobile: pt-32 (Padding top) & text-center
+          // Desktop (xl): pt-40 (Original), text-left (Original), justify-center (Original)
+          className="flex flex-col justify-start pt-32 pb-20 text-center xl:justify-center xl:pt-40 xl:text-left h-full container mx-auto px-4 relative z-10"
         >
           {/* Title */}
-          <motion.h1 variants={item} className="h1 tracking-tight">
-            <span className="block text-white/95">
+          <motion.h1 variants={item} className="h1 tracking-tight mb-2 xl:mb-0 mt-16">
+            {/* 
+               Mobile: text-4xl (Readable size)
+               Desktop: h1 class takes over (Original Huge Size) 
+            */}
+            <span className="block text-white/95 text-4xl md:text-5xl xl:text-[inherit]">
               Romana Idress Ekfa
             </span>
 
@@ -54,7 +64,11 @@ const Home = () => {
               transition={{ type: "spring", stiffness: 220, damping: 18 }}
             >
              <div className="relative inline-block">
-              <span className="fire-gold-gradient fire-shimmer fire-glow fire-pulse font-extrabold">
+              {/* 
+                 Mobile: text-2xl
+                 Desktop: xl:text-6xl (Restored the BIG text size)
+              */}
+              <span className="fire-gold-gradient fire-shimmer fire-glow fire-pulse font-extrabold text-2xl md:text-3xl xl:text-6xl">
                 Full Stack Developer
               </span>
               <span className="absolute -bottom-2 left-0 w-full h-[2px] bg-[#FF2124]/70 blur-sm"></span>
@@ -62,10 +76,11 @@ const Home = () => {
             </motion.span>
           </motion.h1>
 
-          {/* Subtitle */}
+          {/* Subtitle / Bio Box */}
           <motion.p
             variants={item}
-            className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16"
+            // Restored Original Desktop Widths: max-w-sm xl:max-w-xl
+            className="max-w-sm md:max-w-md xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16 mt-4 xl:mt-0"
           >
             <motion.span
               className="royal-glass inline-block rounded-2xl px-6 py-5 text-white/80 leading-relaxed"
@@ -74,7 +89,7 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -2 }}
             >
-              <span className="fire-glass inline-block rounded-2xl px-6 py-5 text-white/85 leading-relaxed">
+              <span className="fire-glass inline-block rounded-2xl px-2 py-2 xl:px-6 xl:py-5 text-white/85 leading-relaxed text-sm xl:text-lg text-justify xl:text-left">
                 Full Stack Laravel Developer with{" "}
                 <span className="fire-gold-gradient fire-shimmer font-semibold">
                   3+ years
@@ -90,11 +105,12 @@ const Home = () => {
             </motion.span>
           </motion.p>
 
-          {/* btn */}
-          <div className="flex justify-center xl:hidden relative">
+          {/* Mobile Button (Hidden on Desktop) */}
+          <div className="flex justify-center xl:hidden relative z-20 mb-10">
             <ProjectsBtn />
           </div>
 
+          {/* Desktop Button (Original Position - Hidden on Mobile) */}
           <motion.div
             variants={item}
             className="hidden xl:flex"
@@ -106,12 +122,12 @@ const Home = () => {
         </motion.div>
       </div>
 
-      {/* image */}
-      <div className="w-[1280px] h-full absolute right-0 bottom-0">
+      {/* image - Kept exactly as original */}
+      <div className="w-[1280px] h-full absolute right-0 bottom-0 pointer-events-none">
         {/* bg img */}
         <div
           role="img"
-          className="bg-none xl:bg-explosion -top-[150px]  right-[20px] xl:bg-cover xl:bg-right xl:bg-no-repeat w-full h-full absolute mix-blend-color-dodge translate-z-0"
+          className="bg-none xl:bg-explosion -top-[150px] right-[20px] xl:bg-cover xl:bg-right xl:bg-no-repeat w-full h-full absolute mix-blend-color-dodge translate-z-0"
           aria-hidden
         />
 
@@ -130,11 +146,11 @@ const Home = () => {
           <Avatar />
         </motion.div>
       </div>
+      
       <div>
           <MiddleImg  />
       </div>
     </div>
-    
   );
 };
 

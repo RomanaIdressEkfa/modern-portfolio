@@ -1,9 +1,5 @@
 import { motion } from "framer-motion";
-
-// FIX: 'RxShield' does not exist in this library. 
-// Replaced with 'RxLockClosed' (Security) which definitely exists.
 import { RxCheck, RxRocket, RxLockClosed } from "react-icons/rx";
-
 import Bulb from "../../components/Bulb";
 import Circles from "../../components/Circles";
 import ServiceSlider from "../../components/ServiceSlider";
@@ -11,15 +7,24 @@ import { fadeIn } from "../../variants";
 
 const Services = () => {
   return (
-    <div className="h-full bg-primary/30 py-28 xl:py-36 flex items-center overflow-y-auto xl:overflow-hidden relative">
+    // FIX 1: 'h-full overflow-y-auto' enables vertical scrolling
+    // 'bg-primary/30' keeps the background consistent
+    <div className="h-full bg-primary/30 overflow-y-auto relative">
       <Circles />
 
-      <div className="container mx-auto h-full flex flex-col justify-center">
+      {/* 
+         FIX 2: 
+         - 'container mx-auto' centers content
+         - 'min-h-full' ensures background covers scrolling area
+         - 'pt-36 pb-24' adds safe padding for mobile header/footer
+         - 'xl:pt-40 xl:pb-0' resets padding for desktop
+      */}
+      <div className="container mx-auto min-h-full flex flex-col justify-center pt-36 pb-24 xl:pt-40 xl:pb-0">
         
-        <div className="flex flex-col xl:flex-row gap-x-8 gap-y-8 items-center xl:items-start justify-center h-max xl:h-full pb-24 xl:pb-0">
+        <div className="flex flex-col xl:flex-row gap-x-8 gap-y-12 items-center xl:items-start">
           
           {/* TEXT SECTION (Left Side) */}
-          <div className="text-center flex flex-col lg:text-left xl:w-[35%] z-20 xl:justify-center">
+          <div className="text-center flex flex-col lg:text-left xl:w-[35%] z-20 xl:mb-0">
             
             <motion.div
               variants={fadeIn("right", 0.3)}
@@ -37,42 +42,42 @@ const Services = () => {
                    <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-[40px] -mr-16 -mt-16 pointer-events-none"></div>
 
                    {/* HEADING */}
-                   <h2 className="h2 mb-4 leading-tight text-white relative z-10 text-center md:text-left text-3xl md:text-4xl">
+                   <h2 className="h2 mb-4 leading-tight text-white relative z-10 text-center md:text-left text-2xl md:text-4xl">
                       My Premium <br /> 
                       <span className="text-accent fire-glow">Services.</span>
                    </h2>
 
                    {/* Description */}
-                   <p className="relative z-10 text-sm md:text-base mb-6">
+                   <p className="relative z-10 text-sm md:text-base mb-6 text-justify md:text-left">
                      I craft <span className="fire-gold-gradient font-bold">High-Performance</span> digital experiences. 
                      From complex <span className="text-accent font-semibold">SaaS Platforms</span> to custom <span className="text-accent font-semibold">E-commerce</span> solutions, my expertise in Laravel & React ensures your business scales securely.
                    </p>
 
                    {/* Key Features List (Why Choose Me) */}
-                   <div className="relative z-10 space-y-3 border-t border-white/10 pt-4 mt-2">
+                   <div className="relative z-10 space-y-4 border-t border-white/10 pt-4 mt-2">
                       <p className="text-xs font-bold uppercase tracking-widest text-accent mb-2">Why Choose Me?</p>
                       
-                      {/* Feature 1: Clean Architecture */}
-                      <div className="flex items-center gap-x-3 group/item">
-                        <RxCheck className="text-accent text-xl min-w-[20px] font-bold" />
+                      {/* Feature 1 */}
+                      <div className="flex items-start gap-x-3 group/item">
+                        <RxCheck className="text-accent text-xl min-w-[20px] font-bold mt-1" />
                         <span className="text-sm font-light text-white/90">Clean, Scalable & Maintainable Architecture</span>
                       </div>
                       
-                      {/* Feature 2: Security (Updated Icon to RxLockClosed) */}
-                      <div className="flex items-center gap-x-3 group/item">
-                        <RxLockClosed className="text-accent text-xl min-w-[20px]" />
+                      {/* Feature 2 */}
+                      <div className="flex items-start gap-x-3 group/item">
+                        <RxLockClosed className="text-accent text-xl min-w-[20px] mt-1" />
                         <span className="text-sm font-light text-white/90">Enterprise-grade Security & Performance</span>
                       </div>
 
-                      {/* Feature 3: Support */}
-                      <div className="flex items-center gap-x-3 group/item">
-                        <RxRocket className="text-accent text-xl min-w-[20px]" />
+                      {/* Feature 3 */}
+                      <div className="flex items-start gap-x-3 group/item">
+                        <RxRocket className="text-accent text-xl min-w-[20px] mt-1" />
                         <span className="text-sm font-light text-white/90">On-time Delivery with Post-Launch Support</span>
                       </div>
                    </div>
 
                  </div>
-              </div>
+               </div>
             </motion.div>
           </div>
 

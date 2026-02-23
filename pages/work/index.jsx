@@ -27,7 +27,7 @@ const Work = () => {
             exit="hidden"
             className="h2 text-2xl md:text-3xl xl:text-5xl"
           >
-            My <span className="text-accent">Masterpieces</span>
+            My <span className="text-accent">Projects</span>
           </motion.h2>
           
           <motion.p
