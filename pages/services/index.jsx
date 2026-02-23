@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { RxCheck, RxRocket, RxLockClosed } from "react-icons/rx";
 import Bulb from "../../components/Bulb";
 import Circles from "../../components/Circles";
 import ServiceSlider from "../../components/ServiceSlider";
@@ -7,92 +6,51 @@ import { fadeIn } from "../../variants";
 
 const Services = () => {
   return (
-    // FIX 1: 'h-full overflow-y-auto' enables vertical scrolling
-    // 'bg-primary/30' keeps the background consistent
     <div className="h-full bg-primary/30 overflow-y-auto relative">
       <Circles />
 
       {/* 
-         FIX 2: 
-         - 'container mx-auto' centers content
-         - 'min-h-full' ensures background covers scrolling area
-         - 'pt-36 pb-24' adds safe padding for mobile header/footer
-         - 'xl:pt-40 xl:pb-0' resets padding for desktop
+        FIXES:
+        1. pt-40 (Mobile): Pushes content down below the logo.
+        2. xl:pt-48 (Desktop): Pushes content further down as requested.
+        3. pb-32: Ensures bottom space for scrolling above the nav bar.
       */}
-      <div className="container mx-auto min-h-full flex flex-col justify-center pt-36 pb-24 xl:pt-40 xl:pb-0">
+      <div className="container mx-auto min-h-full flex flex-col pt-40 pb-32 xl:pt-48 xl:pb-0">
         
-        <div className="flex flex-col xl:flex-row gap-x-8 gap-y-12 items-center xl:items-start">
-          
-          {/* TEXT SECTION (Left Side) */}
-          <div className="text-center flex flex-col lg:text-left xl:w-[35%] z-20 xl:mb-0">
-            
-            <motion.div
-              variants={fadeIn("right", 0.3)}
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-              className="w-full max-w-[500px] mx-auto lg:mx-0"
-            >
-               {/* Royal Glass Border */}
-               <div className="royal-glass rounded-xl p-1">
-                 {/* Inner Fire Glass Box */}
-                 <div className="fire-glass rounded-xl p-6 md:p-8 text-white/80 leading-relaxed text-base relative overflow-hidden group text-left">
-                   
-                   {/* Background Glow */}
-                   <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-[40px] -mr-16 -mt-16 pointer-events-none"></div>
-
-                   {/* HEADING */}
-                   <h2 className="h2 mb-4 leading-tight text-white relative z-10 text-center md:text-left text-2xl md:text-4xl">
-                      My Premium <br /> 
-                      <span className="text-accent fire-glow">Services.</span>
-                   </h2>
-
-                   {/* Description */}
-                   <p className="relative z-10 text-sm md:text-base mb-6 text-justify md:text-left">
-                     I craft <span className="fire-gold-gradient font-bold">High-Performance</span> digital experiences. 
-                     From complex <span className="text-accent font-semibold">SaaS Platforms</span> to custom <span className="text-accent font-semibold">E-commerce</span> solutions, my expertise in Laravel & React ensures your business scales securely.
-                   </p>
-
-                   {/* Key Features List (Why Choose Me) */}
-                   <div className="relative z-10 space-y-4 border-t border-white/10 pt-4 mt-2">
-                      <p className="text-xs font-bold uppercase tracking-widest text-accent mb-2">Why Choose Me?</p>
-                      
-                      {/* Feature 1 */}
-                      <div className="flex items-start gap-x-3 group/item">
-                        <RxCheck className="text-accent text-xl min-w-[20px] font-bold mt-1" />
-                        <span className="text-sm font-light text-white/90">Clean, Scalable & Maintainable Architecture</span>
-                      </div>
-                      
-                      {/* Feature 2 */}
-                      <div className="flex items-start gap-x-3 group/item">
-                        <RxLockClosed className="text-accent text-xl min-w-[20px] mt-1" />
-                        <span className="text-sm font-light text-white/90">Enterprise-grade Security & Performance</span>
-                      </div>
-
-                      {/* Feature 3 */}
-                      <div className="flex items-start gap-x-3 group/item">
-                        <RxRocket className="text-accent text-xl min-w-[20px] mt-1" />
-                        <span className="text-sm font-light text-white/90">On-time Delivery with Post-Launch Support</span>
-                      </div>
-                   </div>
-
-                 </div>
-               </div>
-            </motion.div>
-          </div>
-
-          {/* SLIDER SECTION (Right Side) */}
-          <motion.div
-            variants={fadeIn("left", 0.6)}
+        {/* HEADER SECTION */}
+        <div className="flex flex-col items-center text-center mb-8 xl:mb-16 z-20">
+          <motion.h2
+            variants={fadeIn("up", 0.2)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="w-full xl:w-[65%] z-10 px-2 md:px-0"
+            className="h2 text-3xl xl:text-5xl mb-4"
           >
-            <ServiceSlider />
-          </motion.div>
-          
+            My Premium <span className="text-accent">Services.</span>
+          </motion.h2>
+
+          <motion.p
+            variants={fadeIn("up", 0.4)}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="max-w-[600px] mx-auto text-white/70 text-sm md:text-base leading-relaxed px-4"
+          >
+            I build <span className="text-accent font-bold">Scalable</span> & <span className="text-accent font-bold">Secure</span> web applications. 
+            Focused on performance, clean code, and user-centric design to scale your business.
+          </motion.p>
         </div>
+
+        {/* SLIDER SECTION */}
+        <motion.div
+          variants={fadeIn("up", 0.6)}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+          className="w-full xl:max-w-[95%] mx-auto z-10"
+        >
+          <ServiceSlider />
+        </motion.div>
       </div>
       
       <Bulb />
