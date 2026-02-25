@@ -1,154 +1,178 @@
 import { motion } from "framer-motion";
+import Image from "next/image"; 
+import CountUp from "react-countup";
 
 import ParticlesContainer from "../components/ParticlesContainer";
 import ProjectsBtn from "../components/ProjectsBtn";
 import Avatar from "../components/Avatar";
-
 import { fadeIn } from "../variants";
 import MiddleImg from "../components/MiddIeImg";
 
+// Animation Variants
 const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.15,
-    },
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
   },
 };
 
 const item = {
-  hidden: { opacity: 0, y: 22, filter: "blur(6px)" },
-  show: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
-  },
+  hidden: { opacity: 0, y: 30, filter: "blur(5px)" },
+  show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.8, ease: "easeOut" } },
 };
+
+// Tech Stack Data
+const techStack = [
+  "Laravel", "React", "Next.js", "MySQL", "AWS", "Docker"
+];
 
 const Home = () => {
   return (
-    // FIX: 'overflow-y-auto' for Mobile scrolling
-    // 'xl:overflow-hidden' ensures Desktop remains fixed (no scrollbar on PC)
-    <div className="bg-primary/60 h-full overflow-y-auto xl:overflow-hidden relative">
+    <div className="bg-black h-full overflow-y-auto overflow-x-hidden xl:overflow-hidden relative font-sans">
       
-      {/* text */}
-      <div className="w-full min-h-full bg-gradient-to-r from-black/65 via-black/35 to-black/65">
+      {/* --- BACKGROUND SECTION --- */}
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
+       
+       {/* Fire Explosion Background */}
+       <div 
+        className="bg-explosion bg-cover bg-center bg-no-repeat w-full h-full absolute translate-z-0"
+        style={{ 
+            filter: "hue-rotate(330deg) saturate(200%) contrast(110%) brightness(0.7)",
+            opacity: 1.9,
+            mixBlendMode: "screen"
+        }} 
+        />
+        
+        {/* Dark Overlay for Depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-red-900/10 to-black opacity-90 mix-blend-multiply"></div>
+        
+        {/* Ambient Red Glow (Responsive) */}
+        <div className="absolute top-[-10%] left-[-20%] xl:top-[-20%] xl:left-[-10%] w-[250px] h-[250px] xl:w-[600px] xl:h-[600px] bg-[#FF1D1E]/20 rounded-full blur-[80px] xl:blur-[120px] mix-blend-screen animate-pulse"></div>
+        
+        <ParticlesContainer />
+      </div>
+
+      {/* --- MAIN CONTENT --- */}
+      <div className="w-full min-h-full relative z-10">
+        
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
           exit="hidden"
-          // FIX:
-          // Mobile: pt-32 (Padding top) & text-center
-          // Desktop (xl): pt-40 (Original), text-left (Original), justify-center (Original)
-          className="flex flex-col justify-start pt-32 pb-20 text-center xl:justify-center xl:pt-40 xl:text-left h-full container mx-auto px-4 relative z-10"
+          className="flex flex-col justify-start xl:justify-center h-full container mx-auto px-4 relative z-10 pt-[110px] pb-32 xl:pt-40 xl:pb-0 text-center xl:text-left"
         >
-          {/* Title */}
-          <motion.h1 variants={item} className="h1 tracking-tight mb-2 xl:mb-0 mt-16">
-            {/* 
-               Mobile: text-4xl (Readable size)
-               Desktop: h1 class takes over (Original Huge Size) 
-            */}
-            <span className="block text-white/95 text-4xl md:text-5xl xl:text-[inherit]">
-              Romana Idress Ekfa
-            </span>
 
-            {/* Role */}
-            <motion.span
-              variants={item}
-              className="block mt-2 font-extrabold tracking-wide royal-gradient royal-glow royal-shimmer royal-pulse"
-              whileHover={{ scale: 1.01 }}
-              transition={{ type: "spring", stiffness: 220, damping: 18 }}
-            >
-             <div className="relative inline-block">
-              {/* 
-                 Mobile: text-2xl
-                 Desktop: xl:text-6xl (Restored the BIG text size)
-              */}
-              <span className="fire-gold-gradient fire-shimmer fire-glow fire-pulse font-extrabold text-2xl md:text-3xl xl:text-6xl">
-                Full Stack Developer
-              </span>
-              <span className="absolute -bottom-2 left-0 w-full h-[2px] bg-[#FF2124]/70 blur-sm"></span>
-            </div>
-            </motion.span>
-          </motion.h1>
-
-          {/* Subtitle / Bio Box */}
-          <motion.p
+          {/* Mobile Avatar (Floating Ring Effect) */}
+          <motion.div 
             variants={item}
-            // Restored Original Desktop Widths: max-w-sm xl:max-w-xl
-            className="max-w-sm md:max-w-md xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16 mt-4 xl:mt-0"
+            className="xl:hidden relative w-[260px] h-[260px] mx-auto mb-6 rounded-full overflow-hidden border-[2px] border-[#FF1D1E]/60 shadow-[0_0_40px_rgba(255,29,30,0.3)] group"
           >
-            <motion.span
-              className="royal-glass inline-block rounded-2xl px-6 py-5 text-white/80 leading-relaxed"
-              initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -2 }}
-            >
-              <span className="fire-glass inline-block rounded-2xl px-2 py-2 xl:px-6 xl:py-5 text-white/85 leading-relaxed text-sm xl:text-lg text-justify xl:text-left">
-                Full Stack Laravel Developer with{" "}
-                <span className="fire-gold-gradient fire-shimmer font-semibold">
-                  3+ years
-                </span>{" "}
-                experience building scalable, high-performance web apps — e-commerce,
-                service marketplaces, and LMS — using{" "}
-                <span className="fire-gold-gradient fire-shimmer font-semibold">
-                  Laravel, PHP, MySQL
-                </span>
-                . Focused on clean architecture, performance optimization, APIs & payment integrations.
+             <Image 
+                src="/avatar.png" 
+                fill 
+                alt="mobile-avatar" 
+                className="object-cover object-top group-hover:scale-110 transition-transform duration-700"
+             />
+             <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+          </motion.div>
+
+          {/* Text Container with Subtle Glass Effect */}
+          <div className="xl:max-w-[60%] z-20 relative">
+            
+            {/* Name */}
+            <motion.h1 variants={item} className="h1 tracking-tight mb-2 mt-0 xl:mt-16">
+              <span className="block text-white text-3xl md:text-5xl xl:text-7xl font-bold drop-shadow-2xl">
+                Romana Idress Ekfa
               </span>
 
-            </motion.span>
-          </motion.p>
+              {/* Fire Text Title */}
+              <motion.span
+                className="block mt-2 font-extrabold tracking-wide"
+                whileHover={{ scale: 1.02 }}
+              >
+               <div className="relative inline-block pb-3">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FF5733] to-[#FF1D1E] font-black text-2xl md:text-4xl xl:text-6xl uppercase tracking-widest filter drop-shadow-[0_2px_10px_rgba(255,87,51,0.5)]">
+                  Full Stack Developer
+                </span>
+                
+                {/* Glowing Line */}
+                <span className="hidden xl:block absolute bottom-0 left-0 w-full h-[4px] bg-gradient-to-r from-[#FF1D1E] to-transparent shadow-[0_0_20px_#FF1D1E] rounded-full"></span>
+              </div>
+              </motion.span>
+            </motion.h1>
 
-          {/* Mobile Button (Hidden on Desktop) */}
-          <div className="flex justify-center xl:hidden relative z-20 mb-10">
-            <ProjectsBtn />
+            {/* NEW: Tech Stack Badges */}
+            <motion.div variants={item} className="flex flex-wrap justify-center xl:justify-start gap-2 my-4 xl:my-6">
+              {techStack.map((tech, index) => (
+                <span key={index} className="px-3 py-1 rounded-full border border-[#FF1D1E]/30 bg-[#FF1D1E]/10 text-white/80 text-[10px] md:text-xs tracking-wider uppercase hover:bg-[#FF1D1E] hover:text-white transition-all duration-300 cursor-default shadow-[0_0_10px_rgba(255,29,30,0.1)]">
+                  {tech}
+                </span>
+              ))}
+            </motion.div>
+
+            {/* Bio */}
+            <motion.p
+              variants={item}
+              className="max-w-sm md:max-w-xl xl:max-w-2xl mx-auto xl:mx-0 mb-8 text-white/70 text-sm md:text-base leading-relaxed font-light backdrop-blur-sm"
+            >
+              Expert in architecting robust, scalable enterprise-grade solutions. I specialize in fusing high-performance backends (<span className="text-[#FF1D1E] font-semibold">Laravel, PHP</span>) with dynamic frontends (<span className="text-[#FF1D1E] font-semibold">React, Next.js</span>). Focused on secure API development and crafting seamless digital ecosystems.
+            </motion.p>
+
+            {/* Stats Section with Vertical Separators */}
+            <motion.div 
+               variants={item}
+               className="flex justify-center xl:justify-start items-center gap-4 md:gap-8 mb-8"
+            >
+               {[
+                 { count: 3, label: "Years Exp." },
+                 { count: 60, label: "Projects" },
+                 { count: 30, label: "Happy Clients" }
+               ].map((stat, idx) => (
+                 <div key={idx} className="flex items-center">
+                    <div className="flex flex-col items-center xl:items-start group cursor-default">
+                        <div className="text-2xl xl:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#FF1D1E] to-[#a60f0f] flex group-hover:scale-110 transition-transform duration-300 drop-shadow-lg">
+                        <CountUp start={0} end={stat.count} duration={4} /> +
+                        </div>
+                        <div className="text-[10px] md:text-xs uppercase tracking-[2px] text-white/50 mt-1 font-medium group-hover:text-white transition-colors">{stat.label}</div>
+                    </div>
+                    {/* Add divider except for the last item */}
+                    {idx !== 2 && (
+                        <div className="w-[1px] h-[30px] bg-white/10 ml-4 md:ml-8 hidden md:block"></div>
+                    )}
+                 </div>
+               ))}
+            </motion.div>
+
+            {/* Button */}
+            <motion.div variants={item} className="flex justify-center xl:justify-start relative z-20">
+              <ProjectsBtn />
+            </motion.div>
           </div>
 
-          {/* Desktop Button (Original Position - Hidden on Mobile) */}
-          <motion.div
-            variants={item}
-            className="hidden xl:flex"
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 240, damping: 18 }}
-          >
-            <ProjectsBtn />
-          </motion.div>
         </motion.div>
       </div>
 
-      {/* image - Kept exactly as original */}
-      <div className="w-[1280px] h-full absolute right-0 bottom-0 pointer-events-none">
-        {/* bg img */}
-        <div
-          role="img"
-          className="bg-none xl:bg-explosion -top-[150px] right-[20px] xl:bg-cover xl:bg-right xl:bg-no-repeat w-full h-full absolute mix-blend-color-dodge translate-z-0"
-          aria-hidden
-        />
+       {/* --- DESKTOP AVATAR --- */}
+       <motion.div
+        variants={fadeIn("up", 0.5)}
+        initial="hidden"
+        animate="show"
+        exit="hidden"
+        transition={{ duration: 1, ease: "easeInOut" }}
+        className="w-full h-full absolute -bottom-0 lg:right-[5%] hidden xl:flex pointer-events-none z-10 overflow-hidden"
+      >
+        <div className="absolute bottom-0 right-0 w-[750px] h-[800px] mix-blend-lighten">
+            <Avatar />
+        </div>
+      </motion.div>
 
-        {/* particles */}
-        <ParticlesContainer />
-
-        {/* avatar */}
-        <motion.div
-          variants={fadeIn("up", 0.5)}
-          initial="hidden"
-          animate="show"
-          exit="hidden"
-          transition={{ duration: 1, ease: "easeInOut" }}
-          className="w-full h-full max-w-[737px] max-h-[678px] absolute -bottom-32 lg:bottom-0 lg:right-[8%]"
-        >
-          <Avatar />
-        </motion.div>
-      </div>
-      
-      <div>
-          <MiddleImg  />
+      {/* Middle Background Element */}
+      <div className="hidden xl:block absolute left-[10%] -bottom-[18%] z-0 mix-blend-screen opacity-50 pointer-events-none">
+          <div style={{ filter: "hue-rotate(330deg) saturate(200%)" }}>
+             <MiddleImg  />
+          </div>
       </div>
     </div>
   );

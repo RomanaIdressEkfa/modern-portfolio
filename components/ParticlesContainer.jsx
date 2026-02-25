@@ -1,6 +1,6 @@
-import { useCallback } from "react";
 import { Particles } from "react-tsparticles";
 import { loadFull } from "tsparticles";
+import React, { useCallback } from "react";
 
 const ParticlesContainer = () => {
   // init
@@ -48,7 +48,7 @@ const ParticlesContainer = () => {
         },
         particles: {
           color: {
-            value: "#e68e2e",
+            value: "#e68e2e", // Gold/Orange color for fire theme
           },
           links: {
             color: "#f5d393",
@@ -63,11 +63,12 @@ const ParticlesContainer = () => {
           move: {
             direction: "none",
             enable: true,
-            outMode: {
+            outModes: {
               default: "bounce",
             },
             random: false,
-            speed: 1,
+            // HERE IS THE FIX: Reduced speed from 6/4 to 0.6 (Very Slow)
+            speed: 0.6, 
             straight: false,
           },
           number: {
@@ -84,10 +85,7 @@ const ParticlesContainer = () => {
             type: "circle",
           },
           size: {
-            value: {
-              min: 1,
-              max: 5,
-            },
+            value: { min: 1, max: 5 },
           },
         },
         detectRetina: true,

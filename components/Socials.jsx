@@ -15,21 +15,21 @@ export const socialData = [
     link: "https://www.linkedin.com/in/romanaidressekfa/",
     Icon: RiLinkedinLine,
   },
-  {
-    name: "Behance",
-    link: "https://www.behance.net/romanaidress",
-    Icon: RiBehanceLine,
-  },
+  // {
+  //   name: "Behance",
+  //   link: "https://www.behance.net/romanaidress",
+  //   Icon: RiBehanceLine,
+  // },
   {
     name: "Facebook",
     link: "https://www.facebook.com/romanaidressekfa",
     Icon: RiFacebookLine,
   },
-  {
-    name: "Dribbble",
-    link: "https://dribbble.com/romanaidressekfa",
-    Icon: RiDribbbleLine,
-  },
+  // {
+  //   name: "Dribbble",
+  //   link: "https://dribbble.com/romanaidressekfa",
+  //   Icon: RiDribbbleLine,
+  // },
   // {
   //   name: "Pinterest",
   //   link: "https://pinterest.com",
