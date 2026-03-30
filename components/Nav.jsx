@@ -62,15 +62,12 @@ const Nav = () => {
                 </div>
               </div>
 
-              {/* Icon Container with Glow & Scale Effect */}
               <div className="relative flex items-center justify-center">
-                
-                {/* Active Indicator Background */}
+
                 {isActive && (
                   <span className="absolute w-10 h-10 bg-accent/20 rounded-full blur-[8px] -z-10 animate-pulse"></span>
                 )}
-                
-                {/* The Icon */}
+
                 <div className={`transition-transform duration-300 group-hover:scale-110 ${isActive ? 'drop-shadow-[0_0_10px_rgba(255,87,34,0.6)]' : ''}`}>
                   <link.Icon aria-hidden />
                 </div>

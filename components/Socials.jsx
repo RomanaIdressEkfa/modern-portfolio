@@ -7,6 +7,7 @@ import {
   RiDribbbleLine,
   RiGithubLine,
   RiPinterestLine,
+  // RiBriefcaseLine as RiPortfolioLine,
 } from "react-icons/ri";
 
 export const socialData = [
@@ -40,6 +41,11 @@ export const socialData = [
     link: "https://github.com/RomanaIdressEkfa/modern-portfolio",
     Icon: RiGithubLine,
   },
+  // {
+  //   name: "CV/Portfolio",
+  //   link: "https://drive.google.com/file/d/1LyCD_JLAYmfqgcWDt1635ogjbQapj9Cm/view",
+  //   Icon: RiPortfolioLine,
+  // },
 ];
 
 const Socials = () => {
@@ -62,6 +68,16 @@ const Socials = () => {
           <span className="sr-only">{social.name}</span>
         </Link>
       ))}
+
+       <Link
+        href="https://drive.google.com/file/d/1LyCD_JLAYmfqgcWDt1635ogjbQapj9Cm/view"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-red-500 hover:bg-red-600 text-white text-sm px-5 py-2 rounded-full shadow-md hover:scale-105"
+      >
+         CV
+      </Link>
+
     </div>
   );
 };
